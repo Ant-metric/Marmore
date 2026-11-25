@@ -1,0 +1,5 @@
+# Cópia original do site de referência (não versionar)
+_backup/
+
+# Configuração local de testes do Claude
+.claude/

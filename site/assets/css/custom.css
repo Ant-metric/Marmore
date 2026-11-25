@@ -1,0 +1,88 @@
+/* Marmore Studio — personalizações sobre o main.css
+   (carregado depois dele, então estas regras têm prioridade) */
+
+/* ---------- Rodapé sem o mapa: o bloco de mármore ocupa a largura toda ---------- */
+.footer-section .left-side {
+  float: none;
+  display: block;
+  width: 100%;
+  min-height: 0;
+  padding: 140px 0 20px;
+}
+
+.footer-section .left-side .bottom {
+  position: relative;
+  bottom: auto;
+  margin-top: 60px;
+}
+
+@media only screen and (max-width: 880px) {
+  .footer-section .left-side { padding-top: 80px; }
+}
+
+/* ---------- Abertura da home (assets/js/home-hero.js) ---------- */
+.home-intro .canvas-wrap canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+/* sem WebGL: mostra a foto estática */
+.home-intro .canvas-wrap.no-webgl .mobile-img { display: block; }
+.home-intro .canvas-wrap.no-webgl canvas { display: none; }
+
+/* com WebGL a animação roda também no celular */
+@media only screen and (max-width: 680px) {
+  .home-intro .canvas-wrap.is-webgl .mobile-img { display: none; }
+}
+
+/* nome da linha sob o título ("Linha Luxo" / "Linha Clássica") */
+.home-intro .hero-lines {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 58%;
+  height: 1.2em;
+  font-family: "bigbook", serif;
+  font-size: clamp(56px, 11vw, 170px);
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.home-intro .hero-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: #fff;
+  opacity: 0;
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+  -webkit-transition: opacity .8s ease, -webkit-transform 1s cubic-bezier(.2, .7, .2, 1), -webkit-filter .8s ease;
+  transition: opacity .8s ease, transform 1s cubic-bezier(.2, .7, .2, 1), filter .8s ease;
+  mix-blend-mode: overlay;
+}
+
+.home-intro .hero-line.is-active {
+  opacity: .55;
+  -webkit-transform: none;
+  transform: none;
+  -webkit-filter: none;
+  filter: none;
+  -webkit-transition-delay: .35s;
+  transition-delay: .35s;
+}
+
+@media only screen and (max-width: 680px) {
+  .home-intro .hero-lines { top: 62%; font-size: 15vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-intro .hero-line { -webkit-transition: opacity .3s; transition: opacity .3s; -webkit-transform: none; transform: none; -webkit-filter: none; filter: none; }
+}
